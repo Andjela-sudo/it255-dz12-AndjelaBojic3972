@@ -1,0 +1,19 @@
+<div class="container">
+
+    <div class="row justify-content-between">
+
+        <div class="col">
+            <button class="btn-secondary" (click)=shuffle()>shuflle</button>
+        </div>
+
+        <div class="col">
+            <div class="form-outline">
+                <input [(ngModel)]="searchText" placeholder="maksimalna cena..." type="search" class="form-control">
+            </div>
+        </div>
+
+    </div>
+    
+    <smestaj-component (emitSmestajZaBrisanje)="onBrisiSmestaj($event)" (emitSmestajZaIzmenu)="onIzmeniSmestaj($event)" class="container" *ngFor="let smestaj of smestaji | filterPipe:searchText" [smestaj]="smestaj"></smestaj-component>
+
+</div>

@@ -1,0 +1,22 @@
+<form>
+    <h3>Dodaj sobu za apartman</h3>
+    <div class="form-group">
+        <select class="form-control" name="smestaj" id="smestaj" #izabranismestaj>
+            <option value="-1" selected disabled hidden>Izaberi za koji smestaj dodajes sobu</option>
+            <option *ngFor="let smestaj of smestaji" [value]="smestaj.naziv">{{smestaj.naziv}}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="tip">Tip</label>
+        <input class="form-control" name="tip" id="tip" #newtip>
+    </div>
+    <div>
+        <label for="kvadratura">Kvadratura</label>
+        <input class="form-control" name="kvadratura" id="kvadratura" #newkvadratura>
+    </div>
+    <div class="form-group">
+        <button (click)="addRoom(newtip, newkvadratura,izabranismestaj)" class="btn btn-primary">
+            Submit
+        </button>
+    </div>
+</form>

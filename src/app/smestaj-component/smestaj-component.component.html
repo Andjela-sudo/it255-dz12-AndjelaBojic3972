@@ -1,0 +1,19 @@
+<div class="smestaj card">
+    <img class="card-img" src="{{smestaj.slika}}" alt="Card image cap">
+
+    <div class="card-body card-img-overlay">
+        <h5 class="card-title">{{smestaj.naziv}}</h5>
+        <p class="card-text">{{smestaj.lokacija}}</p>
+        <p class="card-text">{{smestaj.cena}} din</p>
+        <h5>Sobe apartmana:</h5>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item" *ngFor="let soba of smestaj.sobe">{{soba.tip}} -- {{soba.kvadratura}}m2</li>
+        </ul>
+        <div class="dugmici">
+            <a href="#" (click)="izmeniSmestaj()" class="btn btn-warning">Izmeni</a>
+            <a href="#" (click)="obrisiSmestaj()" class="btn btn-danger">Obrisi</a>
+        </div>
+        
+    </div>
+    <form-dodaj-smestaj [isNov]="false" *ngIf="isVisible" (izmenaSmestaja) = "onIzmenaSmestaja($event)"></form-dodaj-smestaj>
+</div>

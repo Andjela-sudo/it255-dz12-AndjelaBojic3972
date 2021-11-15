@@ -1,0 +1,31 @@
+<form>
+    <h3 *ngIf="isNov">Dodaj nov smestaj</h3>
+    
+    <div class="form-group">
+        <label for="naziv">Naziv</label>
+        <input class="form-control" name="naziv" id="naziv" #newnaziv>
+    </div>
+    <div class="form-group">
+        <label for="adresa">Adresa</label>
+        <input class="form-control" name="adresa" id="adresa" #newadresa>
+    </div>
+    <div>
+        <label for="cena">Cena</label>
+        <input class="form-control" name="cena" id="cena" #newcena>
+    </div>
+    <div>
+        <label for="slika">Slika</label>
+        <input class="form-control" name="slika" id="slika" #newslika>
+    </div>
+    <div class="form-group">
+        <button *ngIf="isNov; else izmena" (click)="addApartment(newnaziv, newadresa,newcena,newslika)" class="btn btn-primary">
+            Submit
+        </button>
+        <ng-template #izmena>
+            <button (click)="izmeniSmestaj(newnaziv, newadresa,newcena,newslika)" class="btn btn-primary">
+                Izmeni
+            </button>
+        </ng-template>
+       
+    </div>
+</form>
