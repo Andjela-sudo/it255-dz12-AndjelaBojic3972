@@ -1,4 +1,4 @@
-<form [formGroup]="smestajForm" (ngSubmit)="submitForm(smestajForm.value)">
+<form [formGroup]="smestajForm" (ngSubmit)="submitForm(smestajForm.value)" autocomplete="off">
     <h3 *ngIf="isNov">Dodaj nov smestaj</h3>
     
     <div class="form-group">
