@@ -45,27 +45,20 @@ export class FormDodajSmestajComponent implements OnInit {
   }
 
   submitForm(data:any){
-    console.log(data);
-    
     console.log('forma submit');
-    console.log(this.naziv,this.adresa,this.cena,this.slika);
-    console.log(this.naziv?.errors);
-    console.log(this.adresa?.errors);
-    console.log(this.cena?.errors);
-    console.log(this.slika?.errors);
-    console.log(this.smestajForm.valid);
-    
-    
-    
-    
+    console.log(data);
+
+    this.addApartment(data.naziv,data.adresa,data.cena,data.slika);
   }
 
-  addApartment(naziv: HTMLInputElement, adresa: HTMLInputElement,cena:HTMLInputElement,slika:HTMLInputElement): boolean {
-    this.kreiranjeNovogSmestaja.emit(new Smestaj(naziv.value,adresa.value,[],Number(cena.value),slika.value?slika.value:'/assets/images/noImage.png'))  
+  addApartment(naziv: string, adresa: string,cena:number,slika:string): boolean {
+    this.kreiranjeNovogSmestaja.emit(new Smestaj(naziv,adresa,[],Number(cena),slika?slika:'/assets/images/noImage.png'))  
+    return true;
+  }
+
+  izmeniSmestaj(data:any): boolean {//moraju se promeniti sve vrednosti osim slike
+    this.izmenaSmestaja.emit(new Smestaj(data.naziv,data.adresa,[],Number(data.cena),data.slika?data.slika:'/assets/images/noImage.png'))  
     return false;
   }
-  izmeniSmestaj(naziv: HTMLInputElement, adresa: HTMLInputElement,cena:HTMLInputElement,slika:HTMLInputElement): boolean {
-    this.izmenaSmestaja.emit(new Smestaj(naziv.value,adresa.value,[],Number(cena.value),slika.value?slika.value:'/assets/images/noImage.png'))  
-    return false;
-  }
+
 }

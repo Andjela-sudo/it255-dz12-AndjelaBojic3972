@@ -1,41 +1,39 @@
 <form [formGroup]="smestajForm" (ngSubmit)="submitForm(smestajForm.value)" autocomplete="off">
     <h3 *ngIf="isNov">Dodaj nov smestaj</h3>
-    
+
     <div class="form-group">
         <label for="naziv">Naziv</label>
-        <input class="form-control" name="naziv" id="naziv"  [formControl] = "$any(smestajForm.controls['naziv'])">
+        <input class="form-control" name="naziv" id="naziv" [formControl]="$any(smestajForm.controls['naziv'])">
         <p class="error-message">Ime je obavezno</p>
         <p class="error-message" *ngIf="naziv!.errors?.required">Ime nije validno</p>
     </div>
     <div class="form-group">
         <label for="adresa">Adresa</label>
-        <input class="form-control" name="adresa" id="adresa"  [formControl] = "$any(smestajForm.controls['adresa'])">
+        <input class="form-control" name="adresa" id="adresa" [formControl]="$any(smestajForm.controls['adresa'])">
         <p class="error-message">Adresa je obavezna</p>
-        <p class="error-message" *ngIf="adresa!.errors?.required" >Adresa nije validna</p>
+        <p class="error-message" *ngIf="adresa!.errors?.required">Adresa nije validna</p>
     </div>
     <div>
         <label for="cena">Cena</label>
-        <input class="form-control" name="cena" id="cena"  [formControl] = "$any(smestajForm.controls['cena'])">
+        <input class="form-control" name="cena" id="cena" [formControl]="$any(smestajForm.controls['cena'])">
         <p class="error-message">Cena mora biti broj</p>
         <p class="error-message" *ngIf="cena!.errors?.pattern">Cena nije validna</p>
     </div>
     <div>
         <label for="slika">Slika</label>
-        <input class="form-control" name="slika" id="slika" [formControl] = "$any(smestajForm.controls['slika'])">
+        <input class="form-control" name="slika" id="slika" [formControl]="$any(smestajForm.controls['slika'])">
         <p class="error-message">Slika mora biti link</p>
         <p class="error-message" *ngIf="slika!.errors?.incorrectSlika">Slika nije validna</p>
     </div>
 
     <div class="form-group">
-        <button type="submit" class="btn btn-primary" [disabled] = "!smestajForm.valid" >
+        <button *ngIf="isNov" type="submit" class="btn btn-primary" [disabled]="!smestajForm.valid">
             Submit
         </button>
-        <!-- *ngIf="isNov; else izmena" (click)="addApartment(newnaziv, newadresa,newcena,newslika)" -->
-        <!-- <ng-template #izmena>
-            <button (click)="izmeniSmestaj(newnaziv, newadresa,newcena,newslika)" class="btn btn-primary">
-                Izmeni
-            </button>
-        </ng-template> -->
-       
+
+        <button *ngIf="!isNov" (click)="izmeniSmestaj(smestajForm.value)" class="btn btn-primary">
+            Izmeni
+        </button>
+
     </div>
 </form>
