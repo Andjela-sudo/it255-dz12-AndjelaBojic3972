@@ -5,13 +5,16 @@
   </nav>
 
   <div class="row justify-content-around">
+
     <div class="col-lg-4 bg-dark text-white">
-      <form-dodaj-sobu [smestaji]="smestaji" (kreiranjeNoveSobe)="onKreiranjeNoveSobe($event)"></form-dodaj-sobu>
       <form-dodaj-smestaj [isNov]="true" (kreiranjeNovogSmestaja)="onKreiranjeNovogSmestaja($event)"></form-dodaj-smestaj>
+      <form-dodaj-sobu [smestaji]="smestaji" (kreiranjeNoveSobe)="onKreiranjeNoveSobe($event)"></form-dodaj-sobu>
     </div>
+    
     <div class="col-lg-8">
       <lista-smestaja-component (emitSmestajZaBrisanje)="onObrisiSmestaj($event)" (emitSmestajZaIzmenu)="onZameniSmestaj($event)" [smestaji]="smestaji"></lista-smestaja-component>
     </div>
+
   </div>
 
 </div>
