@@ -39,7 +39,7 @@ export class SmestajComponentComponent implements OnInit {
 
   onIzracunajCenu(){
     this.roomService.smestaj = this.smestaj;
-    console.log(    this.roomService.getPrice(this.brojNoci));
+    this.brojNoci =    this.roomService.getPrice(this.brojNoci);
   }
 
 }
