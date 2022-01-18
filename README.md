@@ -1,6 +1,9 @@
 # IT255DZ05AndjelaBojic3972
 Demo: https://it-255-dz-06-andjela-bojic3972.vercel.app/
 
+
+Domaci zadaci iz predmeta veb programiranje.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.12.
 
 ## Development server
