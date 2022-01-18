@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { RoomService } from '../services/room.service';
 import Smestaj from './smestaj.model';
 
 
@@ -11,10 +12,10 @@ export class SmestajComponentComponent implements OnInit {
   @Input() smestaj:Smestaj
   @Output() emitSmestajZaBrisanje:EventEmitter<Smestaj>
   @Output() emitSmestajZaIzmenu:EventEmitter<Object>
- 
+ brojNoci : number
   isVisible:boolean
 
-  constructor() { 
+  constructor(private roomService : RoomService) { 
     this.isVisible = false;
      this.emitSmestajZaBrisanje = new EventEmitter<Smestaj>()
      this.emitSmestajZaIzmenu = new EventEmitter<Object>()
@@ -34,6 +35,11 @@ export class SmestajComponentComponent implements OnInit {
   onIzmenaSmestaja(novSmestaj:Smestaj){
     let nov = new Smestaj(novSmestaj.naziv,novSmestaj.lokacija,this.smestaj.sobe,novSmestaj.cena,novSmestaj.slika)
     this.emitSmestajZaIzmenu.emit({stariSmestaj: this.smestaj, noviSmestaj: nov})
+  }
+
+  onIzracunajCenu(){
+    this.roomService.smestaj = this.smestaj;
+    console.log(    this.roomService.getPrice(this.brojNoci));
   }
 
 }
