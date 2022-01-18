@@ -27,6 +27,7 @@ export class FormDodajSmestajComponent implements OnInit {
       slika:['',[slikaValidator()]]
     })
    }
+   
 
   ngOnInit(): void {
   }
