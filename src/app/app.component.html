@@ -8,11 +8,15 @@
 
     <div class="col-lg-4 bg-dark text-white">
       <form-dodaj-smestaj [isNov]="true" (kreiranjeNovogSmestaja)="onKreiranjeNovogSmestaja($event)"></form-dodaj-smestaj>
-      <form-dodaj-sobu [smestaji]="smestaji" (kreiranjeNoveSobe)="onKreiranjeNoveSobe($event)"></form-dodaj-sobu>
+      <!-- <form-dodaj-sobu [smestaji]="smestaji" (kreiranjeNoveSobe)="onKreiranjeNoveSobe($event)"></form-dodaj-sobu> -->
     </div>
     
     <div class="col-lg-8">
-      <lista-smestaja-component (emitSmestajZaBrisanje)="onObrisiSmestaj($event)" (emitSmestajZaIzmenu)="onZameniSmestaj($event)" [smestaji]="smestaji"></lista-smestaja-component>
+      <!-- <lista-smestaja-component (emitSmestajZaBrisanje)="onObrisiSmestaj($event)" (emitSmestajZaIzmenu)="onZameniSmestaj($event)" [smestaji]="smestaji | async as sm"></lista-smestaja-component>
+       -->
+       <div *ngIf="smestaji | async as sm">
+         {{sm}}
+       </div>
     </div>
 
   </div>

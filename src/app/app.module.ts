@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListaSmestajaComponentComponent } from './lista-smestaja-component/lista-smestaja-component.component';
@@ -10,6 +9,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormDodajSmestajComponent } from './form-dodaj-smestaj/form-dodaj-smestaj.component';
 import { FormDodajSobuComponent } from './form-dodaj-sobu/form-dodaj-sobu.component';
+import { StoreModule } from '@ngrx/store';
+import {smestajReducer} from './smestaj.reducer'
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { FormDodajSobuComponent } from './form-dodaj-sobu/form-dodaj-sobu.compon
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    StoreModule.forRoot({ smestaji: smestajReducer})
   ],
   providers: [],
   bootstrap: [AppComponent]
